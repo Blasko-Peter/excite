@@ -66,11 +66,11 @@ public class UserList extends IWebAction {
 	private List<Integer> sortedElementsByDate() {
 		List<Integer> sortedIndexList = new ArrayList<>();
 		List<Long> newCreateDatesInNumber = new ArrayList<>();
-		for (Long newNumber : createDatesInNumber) {
+		for(Long newNumber : createDatesInNumber){
 			newCreateDatesInNumber.add(newNumber);
 		}
 		Collections.sort(newCreateDatesInNumber, Collections.reverseOrder());
-		for (Long number : newCreateDatesInNumber) {
+		for(Long number : newCreateDatesInNumber) {
 			for (int i = 0; i < createDatesInNumber.size(); i++) {
 				if (createDatesInNumber.get(i) == number) {
 					sortedIndexList.add(i);

@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
@@ -33,8 +32,8 @@ public class UserList extends IWebAction {
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
 
-		createDatesInNumber = convertStringToLong();
-		System.out.println(sortedElementsByDate());
+		createDatesInNumber = parseDate();
+		System.out.println(createDatesInNumber);
 
 		result.addData("content", getTable());
 
@@ -51,7 +50,7 @@ public class UserList extends IWebAction {
 		return dataList;
 	}
 
-	private List<Long> convertStringToLong() throws ParseException {
+	private List<Long> parseDate() throws ParseException {
 		List<Long> dataList = new ArrayList<>();
 		for (int i = 0; i < createDates.size(); i++) {
 			String input = createDates.get(i);
@@ -61,23 +60,6 @@ public class UserList extends IWebAction {
 			dataList.add(newLong);
 		}
 		return dataList;
-	}
-
-	private List<Integer> sortedElementsByDate() {
-		List<Integer> sortedIndexList = new ArrayList<>();
-		List<Long> newCreateDatesInNumber = new ArrayList<>();
-		for (Long newNumber : createDatesInNumber) {
-			newCreateDatesInNumber.add(newNumber);
-		}
-		Collections.sort(newCreateDatesInNumber, Collections.reverseOrder());
-		for (Long number : newCreateDatesInNumber) {
-			for (int i = 0; i < createDatesInNumber.size(); i++) {
-				if (createDatesInNumber.get(i) == number) {
-					sortedIndexList.add(i);
-				}
-			}
-		}
-		return sortedIndexList;
 	}
 
 	private String getTable() {

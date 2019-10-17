@@ -4,7 +4,7 @@ import java.text.ParseException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -34,6 +34,7 @@ public class UserList extends IWebAction {
 		deleteds = getDataList(databaseName, "deleted");
 
 		createDatesInNumber = convertStringToLong();
+		System.out.println(createDatesInNumber);
 		System.out.println(sortedElementsByDate());
 
 		result.addData("content", getTable());
@@ -65,17 +66,23 @@ public class UserList extends IWebAction {
 
 	private List<Integer> sortedElementsByDate() {
 		List<Integer> sortedIndexList = new ArrayList<>();
-		List<Long> newCreateDatesInNumber = new ArrayList<>();
-		for (Long newNumber : createDatesInNumber) {
-			newCreateDatesInNumber.add(newNumber);
-		}
-		Collections.sort(newCreateDatesInNumber, Collections.reverseOrder());
+		List<Long> newCreateDatesInNumber = createDatesInNumber;
+		int index;
 		for (Long number : newCreateDatesInNumber) {
-			for (int i = 0; i < createDatesInNumber.size(); i++) {
-				if (createDatesInNumber.get(i) == number) {
-					sortedIndexList.add(i);
+			Long maximum = number;
+			int indexOfMaximum = 0;
+			for (index = 0; index < newCreateDatesInNumber.size(); index++) {
+				if (newCreateDatesInNumber.get(index) > maximum) {
+					maximum = newCreateDatesInNumber.get(index);
+					indexOfMaximum = index;
 				}
 			}
+			for (int j = 0; j < createDatesInNumber.size(); j++) {
+				if (createDatesInNumber.get(j) == maximum) {
+					sortedIndexList.add(j);
+				}
+			}
+			newCreateDatesInNumber.remove(indexOfMaximum);
 		}
 		return sortedIndexList;
 	}
