@@ -38,13 +38,26 @@ public class UserList extends IWebAction {
 		createDatesInNumber = convertStringToLong();
 		sortIndexOfElements = sortedElementsByDate();
 
-		if (parameterMap.get("index") == null) {
+		if (parameterMap.get("type") == null) {
 			result.addData("content", getTable());
 		} else {
-			String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("index")));
-			result.addData("content", newEditForm);
-		}
+			if (parameterMap.get("type").equals("update")) {
+				String id = parameterMap.get("id");
+				String email = parameterMap.get("email");
+				String password = parameterMap.get("password");
+				String activated = parameterMap.get("activated");
+				String createDate = parameterMap.get("createDate");
+				String deleted = parameterMap.get("deleted");
 
+				System.out.println(id + "/" + email + "/" + password + "/" + activated + "/" + createDate + "/" + deleted);
+
+				String newEditForm = "<h1>Update</h1>";
+				result.addData("content", newEditForm);
+			} else {
+				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
+				result.addData("content", newEditForm);
+			}
+		}
 		return result;
 	}
 
@@ -94,7 +107,7 @@ public class UserList extends IWebAction {
 		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
 			tableBodyRow = "<tr><td>" + ids.get(index) + "</td><td>" + emails.get(index) + "</td><td>" + passwords.get(index) + "</td><td>" + activateds.get(index) + "</td><td>" + createDates.get(index) + "</td><td>" + deleteds.get(index)
-					+ "</td><td><a href='/userlist?index=" + index + "'><i style='font-size:24px' class='far'>&#xf328;</i></a></td></tr>";
+					+ "</td><td><a href='/userlist?type=" + index + "'><i style='font-size:24px' class='far'>&#xf328;</i></a></td></tr>";
 			tableBody += tableBodyRow;
 		}
 		String tableFooter = "</table>";
@@ -103,9 +116,9 @@ public class UserList extends IWebAction {
 	}
 
 	private String getEditForm(int index) {
-		String editForm = "<form action=''>id<br><input type='text' name='id' value='" + ids.get(index) + "'><br>email<br><input type='text' name='email' value='" + emails.get(index) + "'><br>password<br><input type='text' name='password' value='"
-				+ passwords.get(index) + "'><br>activated<br><input type='text' name='activated' value='" + activateds.get(index) + "'><br>date<br><input type='text' name='createDate' value='" + createDates.get(index)
-				+ "'><br>deleted<br><input type='text' name='deleted' value='" + deleteds.get(index) + "'><br><br><input type='submit' value='Submit'></form>";
+		String editForm = "<form action='/userlist?type=update' method='POST'>id<br><input type='hidden' name='id' value='" + ids.get(index) + "'><br>email<br><input type='text' name='email' value='" + emails.get(index)
+				+ "'><br>password<br><input type='text' name='password' value='" + passwords.get(index) + "'><br>activated<br><input type='text' name='activated' value='" + activateds.get(index)
+				+ "'><br>date<br><input type='text' name='createDate' value='" + createDates.get(index) + "'><br>deleted<br><input type='text' name='deleted' value='" + deleteds.get(index) + "'><br><br><input type='submit' value='Submit'></form>";
 		return editForm;
 	}
 
