@@ -1,11 +1,10 @@
 package com.xcite.javatest.action.web;
 
+import java.text.DateFormat;
 import java.text.ParseException;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import com.xcite.core.interfaces.IWebAction;
 import com.xcite.core.servlet.ParameterMap;
@@ -20,7 +19,6 @@ public class UserList extends IWebAction {
 	private List<String> activateds;
 	private List<String> createDates;
 	private List<String> deleteds;
-	private List<Long> createDatesInNumber;
 
 	@Override
 	public ProcessResult processRequest(ParameterMap parameterMap) throws Throwable {
@@ -32,8 +30,7 @@ public class UserList extends IWebAction {
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
 
-		createDatesInNumber = parseDate();
-		System.out.println(createDatesInNumber);
+		sortedIndex();
 
 		result.addData("content", getTable());
 
@@ -50,16 +47,10 @@ public class UserList extends IWebAction {
 		return dataList;
 	}
 
-	private List<Long> parseDate() throws ParseException {
-		List<Long> dataList = new ArrayList<>();
-		for (int i = 0; i < createDates.size(); i++) {
-			String input = createDates.get(i);
-			DateTimeFormatter format = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss z uuuu").withLocale(Locale.US);
-			ZonedDateTime zdt = ZonedDateTime.parse(input, format);
-			long newLong = zdt.toInstant().toEpochMilli();
-			dataList.add(newLong);
-		}
-		return dataList;
+	private void sortedIndex() throws ParseException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date = dateFormat.parse(createDates.get(0));
+		System.out.println(date);
 	}
 
 	private String getTable() {

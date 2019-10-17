@@ -1,9 +1,12 @@
 package com.xcite.javatest.action.web;
 
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -20,7 +23,6 @@ public class UserList extends IWebAction {
 	private List<String> activateds;
 	private List<String> createDates;
 	private List<String> deleteds;
-	private List<Long> createDatesInNumber;
 
 	@Override
 	public ProcessResult processRequest(ParameterMap parameterMap) throws Throwable {
@@ -32,8 +34,7 @@ public class UserList extends IWebAction {
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
 
-		createDatesInNumber = parseDate();
-		System.out.println(createDatesInNumber);
+		sortedIndex();
 
 		result.addData("content", getTable());
 
@@ -50,16 +51,17 @@ public class UserList extends IWebAction {
 		return dataList;
 	}
 
-	private List<Long> parseDate() throws ParseException {
-		List<Long> dataList = new ArrayList<>();
-		for (int i = 0; i < createDates.size(); i++) {
-			String input = createDates.get(i);
-			DateTimeFormatter format = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss z uuuu").withLocale(Locale.US);
-			ZonedDateTime zdt = ZonedDateTime.parse(input, format);
-			long newLong = zdt.toInstant().toEpochMilli();
-			dataList.add(newLong);
-		}
-		return dataList;
+	private void sortedIndex() throws ParseException {
+		String input = createDates.get(0);
+		DateTimeFormatter f = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss z uuuu").withLocale( Locale.US );
+		ZonedDateTime zdt = ZonedDateTime.parse( input , f );
+		LocalDate ld = zdt.toLocalDate();
+		DateTimeFormatter fLocalDate = DateTimeFormatter.ofPattern( "dd/MM/uuuu" );
+		String output = ld.format( fLocalDate) ;
+		System.out.println( "input: " + input );
+		System.out.println( "zdt: " + zdt );
+		System.out.println( "ld: " + ld );
+		System.out.println( "output: " + output );
 	}
 
 	private String getTable() {

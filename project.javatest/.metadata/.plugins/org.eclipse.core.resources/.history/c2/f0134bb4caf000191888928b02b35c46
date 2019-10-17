@@ -1,6 +1,7 @@
 package com.xcite.javatest.action.web;
 
 import java.text.ParseException;
+import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class UserList extends IWebAction {
 
 	private List<Long> parseDate() throws ParseException {
 		List<Long> dataList = new ArrayList<>();
-		for (int i = 0; i < createDates.size(); i++) {
+		for(int i = 0; i < createDates.size(); i++){
 			String input = createDates.get(i);
 			DateTimeFormatter format = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss z uuuu").withLocale(Locale.US);
 			ZonedDateTime zdt = ZonedDateTime.parse(input, format);
