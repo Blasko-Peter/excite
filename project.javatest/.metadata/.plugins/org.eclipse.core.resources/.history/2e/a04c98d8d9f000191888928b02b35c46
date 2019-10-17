@@ -90,7 +90,7 @@ public class UserList extends IWebAction {
 		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
 			tableBodyRow = "<tr><td>" + ids.get(index) + "</td><td>" + emails.get(index) + "</td><td>" + passwords.get(index) + "</td><td>" + activateds.get(index) + "</td><td>" + createDates.get(index) + "</td><td>" + deleteds.get(index)
-					+ "</td><td><a href='/'><i style='font-size:24px' class='far'>&#xf328;</i></a></td></tr>";
+					+ "</td><td><a type='button' href='/'><i style='font-size:24px' class='far'>&#xf328;</i></a></td></tr>";
 			tableBody += tableBodyRow;
 		}
 		String tableFooter = "</table>";
