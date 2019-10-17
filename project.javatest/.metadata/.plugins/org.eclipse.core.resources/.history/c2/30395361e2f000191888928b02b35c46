@@ -103,9 +103,9 @@ public class UserList extends IWebAction {
 	}
 
 	private String getEditForm(int index) {
-		String editForm = "<form action=''>id<br><input type='text' name='id' value='" + ids.get(index) + "'><br>email<br><input type='text' name='email' value='" + emails.get(index) + "'><br>password<br><input type='text' name='password' value='"
-				+ passwords.get(index) + "'><br>activated<br><input type='text' name='activated' value='" + activateds.get(index) + "'><br>date<br><input type='text' name='createDate' value='" + createDates.get(index)
-				+ "'><br>deleted<br><input type='text' name='deleted' value='" + deleteds.get(index) + "'><br><br><input type='submit' value='Submit'></form>";
+		String editForm = "<form action=''>id<br><input type='text' name='id' value='" + ids.get(index) + "'><br>email<input type='text' name='email' value='" + emails.get(index) + "'><br>password<input type='text' name='password' value='"
+				+ passwords.get(index) + "'><br>activated<input type='text' name='activated' value='" + activateds.get(index) + "'><br>date<input type='text' name='createDate' value='" + createDates.get(index)
+				+ "'><br>deleted<input type='text' name='deleted' value='" + deleteds.get(index) + "'><br><br><input type='submit' value='Submit'></form>";
 		return editForm;
 	}
 
