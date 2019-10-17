@@ -1,0 +1,24 @@
+INDEX VERSION 1.130+C:\setawetasetaset\project.javatest\.metadata\.plugins\org.eclipse.jdt.core
+1356627696.index
+1788243031.index
+1370966000.index
+1762119810.index
+3398097356.index
+3667199322.index
+3641219081.index
+4120858238.index
+231140872.index
+901124961.index
+2799398509.index
+3045254778.index
+3139691850.index
+2207899932.index
+2832825829.index
+1272359398.index
+1334717546.index
+2412459049.index
+1178476499.index
+117370480.index
+3226013657.index
+4115665838.index
+3352527287.index

@@ -1,0 +1,1 @@
+@eclipsec.exe -verbose -consolelog

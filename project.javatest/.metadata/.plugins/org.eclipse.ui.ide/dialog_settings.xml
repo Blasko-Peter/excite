@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="installedFeatures">
+		<item value="org.eclipse.emf.common:2.12.0.v20160420-0247"/>
+		<item value="org.eclipse.emf.ecore:2.12.0.v20160420-0247"/>
+		<item value="org.eclipse.help:2.2.2.v20170301-0400"/>
+		<item value="org.eclipse.jst.enterprise_ui.feature:3.8.0.v201701262139"/>
+		<item value="org.eclipse.platform:4.6.3.v20170301-0400"/>
+		<item value="org.eclipse.rcp:4.6.3.v20170301-0400"/>
+		<item value="org.eclipse.wst.xml_ui.feature:3.8.2.v201702270442"/>
+	</list>
+</section>
