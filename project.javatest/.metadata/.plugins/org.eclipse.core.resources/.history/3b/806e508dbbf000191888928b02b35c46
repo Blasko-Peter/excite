@@ -4,8 +4,7 @@
 <%@page import="org.json.JSONArray"%>
 <%@ page language="java" pageEncoding="UTF-8" session="false"%>
 <%@ page import="com.xcite.core.servlet.ProcessResult"%>
-<%	ProcessResult result = (ProcessResult)request.getAttribute("processResult"); 
-	String content = result.getStringParameter("content");%>
+<%	ProcessResult result = (ProcessResult)request.getAttribute("processResult"); %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,8 +12,7 @@
 		<title>EXCITE - JAVA TEST</title>		
 	</head>
 	<body>
-		Hello World
-		<%=content %>
+		Hello world!
 	</body>	
 		
 </html>

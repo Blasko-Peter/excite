@@ -25,7 +25,7 @@ public class UserList extends IWebAction {
 		activateds = getDataList(databaseName, "activated");
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
-
+		
 		result.addData("content", getTable());
 
 		return result;
@@ -40,12 +40,12 @@ public class UserList extends IWebAction {
 		List<String> dataList = DataBase.selectList(database, field);
 		return dataList;
 	}
-
-	private String getTable() {
+	
+	private String getTable(){
 		String allTable = "";
 		String tableHead = "<table><tr><th>Id</th><th>Email</th><th>Activated</th><th>Date</th><th>Deleted</th></tr>";
 		String tableBody = "";
-		for (int i = 0; i < ids.size(); i++) {
+		for(int i = 0; i < ids.size(); i++){
 			String tableBodyRow = "";
 			tableBodyRow = "<tr><td>" + ids.get(i) + "</td><td>" + emails.get(i) + "</td><td>" + activateds.get(i) + "</td><td>" + createDates.get(i) + "</td><td>" + deleteds.get(i) + "</td></tr>";
 			tableBody += tableBodyRow;
