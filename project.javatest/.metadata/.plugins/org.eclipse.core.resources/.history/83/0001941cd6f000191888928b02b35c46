@@ -18,12 +18,10 @@ public class UserList extends IWebAction {
 	private static final String databaseName = "xjfw.account";
 	private List<String> ids;
 	private List<String> emails;
-	private List<String> passwords;
 	private List<String> activateds;
 	private List<String> createDates;
 	private List<String> deleteds;
 	private List<Long> createDatesInNumber;
-	private List<Integer> sortIndexOfElements;
 
 	@Override
 	public ProcessResult processRequest(ParameterMap parameterMap) throws Throwable {
@@ -31,13 +29,12 @@ public class UserList extends IWebAction {
 
 		ids = getDataList(databaseName, "id");
 		emails = getDataList(databaseName, "email");
-		passwords = getDataList(databaseName, "password");
 		activateds = getDataList(databaseName, "activated");
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
 
 		createDatesInNumber = convertStringToLong();
-		sortIndexOfElements = sortedElementsByDate();
+		System.out.println(sortedElementsByDate());
 
 		result.addData("content", getTable());
 
@@ -85,12 +82,11 @@ public class UserList extends IWebAction {
 
 	private String getTable() {
 		String allTable = "";
-		String tableHead = "<table><tr><th>Id</th><th>Email</th><th>Password</th><th>Activated</th><th>Date</th><th>Deleted</th></tr>";
+		String tableHead = "<table><tr><th>Id</th><th>Email</th><th>Activated</th><th>Date</th><th>Deleted</th></tr>";
 		String tableBody = "";
-		for (Integer index : sortIndexOfElements) {
+		for (int i = 0; i < ids.size(); i++) {
 			String tableBodyRow = "";
-			tableBodyRow = "<tr><td>" + ids.get(index) + "</td><td>" + emails.get(index) + "</td><td>" + passwords.get(index) + "</td><td>" + activateds.get(index) + "</td><td>" + createDates.get(index) + "</td><td>" + deleteds.get(index)
-					+ "</td></tr>";
+			tableBodyRow = "<tr><td>" + ids.get(i) + "</td><td>" + emails.get(i) + "</td><td>" + activateds.get(i) + "</td><td>" + createDates.get(i) + "</td><td>" + deleteds.get(i) + "</td></tr>";
 			tableBody += tableBodyRow;
 		}
 		String tableFooter = "</table>";

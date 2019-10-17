@@ -85,7 +85,7 @@ public class UserList extends IWebAction {
 
 	private String getTable() {
 		String allTable = "";
-		String tableHead = "<table><tr><th>Id</th><th>Email</th><th>Password</th><th>Activated</th><th>Date</th><th>Deleted</th></tr>";
+		String tableHead = "<table><tr><th>Id</th><th>Email</th><th>Activated</th><th>Date</th><th>Deleted</th></tr>";
 		String tableBody = "";
 		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
