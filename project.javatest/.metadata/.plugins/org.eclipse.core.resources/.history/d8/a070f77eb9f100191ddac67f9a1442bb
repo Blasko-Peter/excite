@@ -60,7 +60,7 @@ public class UserList extends IWebAction {
 
 				DataBase.update(databaseName, Integer.parseInt(parameterMap.get("id")), fields);
 
-				String newPage = "<a href='/userlist'><h1>Success Update</h1></a>";
+				String newPage = "<a href='/userlist'><h1>Update</h1></a>";
 				result.addData("content", newPage);
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));

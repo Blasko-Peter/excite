@@ -1,6 +1,5 @@
 package com.xcite.javatest.action.web;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZonedDateTime;
@@ -60,7 +59,7 @@ public class UserList extends IWebAction {
 
 				DataBase.update(databaseName, Integer.parseInt(parameterMap.get("id")), fields);
 
-				String newPage = "<a href='/userlist'><h1>Success Update</h1></a>";
+				String newPage = "<a href='/userlist'><h1>Update</h1></a>";
 				result.addData("content", newPage);
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
@@ -130,7 +129,7 @@ public class UserList extends IWebAction {
 				+ "'><br>date<br><input type='text' name='createDate' value='" + createDates.get(index) + "'><br>deleted<br><input type='text' name='deleted' value='" + deleteds.get(index) + "'><br><br><input type='submit' value='Submit'></form>";
 		return editForm;
 	}
-
+	
 	private String getNewDateForm(String oldDateForm) {
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("E MMM dd HH:mm:ss z uuuu").withLocale(Locale.US);
 		ZonedDateTime zdt = ZonedDateTime.parse(oldDateForm, format);
