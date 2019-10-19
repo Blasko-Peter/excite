@@ -82,11 +82,11 @@ public class UserStat {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());
 		}
 	}
-
+	
 	private static void stat3() {
 		Map<String, Integer> baseStat = new HashMap<String, Integer>();
 		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
-		for (int i = 1; i < subscriptionData.length; i++) {
+		for (int i = 1; i < 10; i++) {
 			String[] temp = subscriptionData[i].split(",");
 			String key = temp[2] + " " + temp[3].substring(0, 7);
 			Integer count = baseStat.get(key);
