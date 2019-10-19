@@ -25,6 +25,13 @@
 		</script>	
 	</head>
 	<body>
+		<form action="/userlist">
+		  Search:<br>
+		  <input type="hidden" name="type" value="search">
+		  <input type="text" name="word">
+		  <br>
+		  <input type="submit" value="Submit">
+		</form> 
 		<%=content %>
 	</body>	
 		

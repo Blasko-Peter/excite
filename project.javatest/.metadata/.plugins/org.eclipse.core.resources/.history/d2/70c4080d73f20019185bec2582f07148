@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
+import org.json.JSONObject;
+
 import com.xcite.core.interfaces.IWebAction;
 import com.xcite.core.servlet.ParameterMap;
 import com.xcite.core.servlet.ProcessResult;
@@ -70,8 +72,6 @@ public class UserList extends IWebAction {
 
 				DataBase.update(databaseName, Integer.parseInt(parameterMap.get("id")), fields);
 
-			} else if (parameterMap.get("type").equals("search")) {
-				System.out.println(parameterMap.get("word"));
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
 				result.addData("content", newEditForm);
@@ -83,6 +83,10 @@ public class UserList extends IWebAction {
 	@Override
 	public String getAuthenticaionClassname() {
 		return null;
+	}
+
+	public void processRequestJSON(JSONObject request) throws Throwable {
+		System.out.println("ez az?:" + request);
 	}
 
 	private List<String> getDataList(String database, String field) {
@@ -121,7 +125,7 @@ public class UserList extends IWebAction {
 
 	private String getTable() {
 		String allTable = "";
-		String tableHead = "<form action='/userlist?type=search' method='POST'>search:<br><input type='text' name='word'><br><input type='submit' value='Submit'></form><table><thead><tr><th>Id</th><th>Email</th><th>Password</th><th>Activated</th><th>Date</th><th>Deleted</th><th>Edit</th><th>Delete</th></tr></thead><tbody id='tbody'>";
+		String tableHead = "<table><thead><tr><th>Id</th><th>Email</th><th>Password</th><th>Activated</th><th>Date</th><th>Deleted</th><th>Edit</th><th>Delete</th></tr></thead><tbody id='tbody'>";
 		String tableBody = "";
 		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
