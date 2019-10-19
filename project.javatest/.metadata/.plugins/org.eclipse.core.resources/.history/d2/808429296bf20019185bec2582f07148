@@ -12,13 +12,12 @@
 		<meta charset="UTF-8">
 		<title>EXCITE - JAVA TEST</title>
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-		<script type="text/javascript" defer>
-			function deleteRow(id){
-				console.log(id);
-				let rowId = "row" + id;
-				let row = document.getElementById(rowId);
-				let tableBody = document.getElementById("tbody");
-				tableBody.removeChild(row);
+		<script type="text/javascript">
+			let delete-btns = document.getElementsByClassName("delete-btn");
+			for(let delete-btn of delete-btns){
+				delete-btn.addEventListener("click", function() {
+					console.log("majom");
+				}
 			}
 		</script>	
 	</head>

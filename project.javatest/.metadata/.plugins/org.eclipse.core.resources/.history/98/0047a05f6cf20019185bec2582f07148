@@ -13,13 +13,15 @@
 		<title>EXCITE - JAVA TEST</title>
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<script type="text/javascript" defer>
-			function deleteRow(id){
-				console.log(id);
-				let rowId = "row" + id;
-				let row = document.getElementById(rowId);
-				let tableBody = document.getElementById("tbody");
-				tableBody.removeChild(row);
+			function deleteRow(){
+				let btns = document.getElementsByClassName("delete-btn");
+				for(let btn of btns){
+					btn.addEventListener("click", function() {
+						console.log("majom");
+					});
+				}
 			}
+			deleteRow();
 		</script>	
 	</head>
 	<body>

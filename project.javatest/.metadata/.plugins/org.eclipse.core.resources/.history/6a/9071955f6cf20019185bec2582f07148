@@ -122,7 +122,7 @@ public class UserList extends IWebAction {
 		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
 			tableBodyRow = "<tr id='row" + ids.get(index) + "'><td>" + ids.get(index) + "</td><td>" + emails.get(index) + "</td><td>" + passwords.get(index) + "</td><td>" + activateds.get(index) + "</td><td>" + createDates.get(index) + "</td><td>"
-					+ deleteds.get(index) + "</td><td><a href='/userlist?type=" + index + "'><i style='font-size:24px' class='far'>&#xf328;</i></a></td><td><button id='" + ids.get(index) + "' onclick='deleteRow(this.id)'>Delete</button></td></tr>";
+					+ deleteds.get(index) + "</td><td><a href='/userlist?type=" + index + "'><i style='font-size:24px' class='far'>&#xf328;</i></a></td><td><button id='" + ids.get(index) + "' class='delete-btn'>Delete</button></td></tr>";
 			tableBody += tableBodyRow;
 		}
 		String tableFooter = "</tbody></table>";
