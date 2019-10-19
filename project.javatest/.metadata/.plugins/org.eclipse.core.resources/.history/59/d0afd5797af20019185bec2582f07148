@@ -73,7 +73,7 @@ public class UserList extends IWebAction {
 
 				List<Integer> indexOfEmails = searchEmailsByKeyWord(parameterMap.get("word"));
 				result.addData("content", getTable(indexOfEmails));
-
+				
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
 				result.addData("content", newEditForm);

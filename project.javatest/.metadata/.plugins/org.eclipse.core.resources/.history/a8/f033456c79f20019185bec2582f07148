@@ -25,6 +25,7 @@ public class UserList extends IWebAction {
 	private List<String> createDates;
 	private List<String> deleteds;
 	private List<Long> createDatesInNumber;
+	private List<Integer> sortIndexOfElements;
 
 	@Override
 	public ProcessResult processRequest(ParameterMap parameterMap) throws Throwable {
@@ -37,10 +38,10 @@ public class UserList extends IWebAction {
 		createDates = getDataList(databaseName, "createDate");
 		deleteds = getDataList(databaseName, "deleted");
 		createDatesInNumber = convertStringToLong();
+		sortIndexOfElements = sortedElementsByDate();
 
 		if (parameterMap.get("type") == null) {
-			List<Integer> sortIndexOfElements = sortedElementsByDate();
-			result.addData("content", getTable(sortIndexOfElements));
+			result.addData("content", getTable());
 		} else {
 			if (parameterMap.get("type").equals("update")) {
 				Object[] fields = new Object[12];
@@ -71,9 +72,7 @@ public class UserList extends IWebAction {
 
 			} else if (parameterMap.get("type").equals("search")) {
 
-				List<Integer> indexOfEmails = searchEmailsByKeyWord(parameterMap.get("word"));
-				result.addData("content", getTable(indexOfEmails));
-
+				searchEmailsByKeyWord(parameterMap.get("word"));
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
 				result.addData("content", newEditForm);
@@ -121,11 +120,11 @@ public class UserList extends IWebAction {
 		return sortedIndexList;
 	}
 
-	private String getTable(List<Integer> indexes) {
+	private String getTable() {
 		String allTable = "";
 		String tableHead = "<form action='/userlist?type=search' method='POST'>Search:<br><input type='text' name='word'><br><input type='submit' value='Submit'></form><table><thead><tr><th>Id</th><th>Email</th><th>Password</th><th>Activated</th><th>Date</th><th>Deleted</th><th>Edit</th><th>Delete</th></tr></thead><tbody id='tbody'>";
 		String tableBody = "";
-		for (Integer index : indexes) {
+		for (Integer index : sortIndexOfElements) {
 			String tableBodyRow = "";
 			tableBodyRow = "<tr id='row" + ids.get(index) + "'><td>" + ids.get(index) + "</td><td>" + emails.get(index) + "</td><td>" + passwords.get(index) + "</td><td>" + activateds.get(index) + "</td><td>" + createDates.get(index) + "</td><td>"
 					+ deleteds.get(index) + "</td><td><a href='/userlist?type=" + index + "'><i style='font-size:24px' class='far'>&#xf328;</i></a></td><td><button id='" + ids.get(index) + "' onclick='deleteRow(this.id)'>Delete</button></td></tr>";
@@ -153,14 +152,14 @@ public class UserList extends IWebAction {
 		return dateText;
 	}
 
-	private List<Integer> searchEmailsByKeyWord(String keyword) {
-		List<Integer> indexOfEmails = new ArrayList<>();
-		for (int i = 0; i < emails.size(); i++) {
-			if (emails.get(i).contains(keyword)) {
-				indexOfEmails.add(i);
+	private void searchEmailsByKeyWord(String keyword) {
+		List<String> newList = new ArrayList<>();
+		for (String email : emails) {
+			if (email.contains(keyword)) {
+				newList.add(email);
 			}
 		}
-		return indexOfEmails;
+		System.out.println(newList);
 	}
 
 }

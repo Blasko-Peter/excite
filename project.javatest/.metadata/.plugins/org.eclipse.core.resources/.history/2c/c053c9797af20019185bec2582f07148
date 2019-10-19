@@ -71,9 +71,7 @@ public class UserList extends IWebAction {
 
 			} else if (parameterMap.get("type").equals("search")) {
 
-				List<Integer> indexOfEmails = searchEmailsByKeyWord(parameterMap.get("word"));
-				result.addData("content", getTable(indexOfEmails));
-
+				searchEmailsByKeyWord(parameterMap.get("word"));
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
 				result.addData("content", newEditForm);
@@ -153,14 +151,14 @@ public class UserList extends IWebAction {
 		return dateText;
 	}
 
-	private List<Integer> searchEmailsByKeyWord(String keyword) {
-		List<Integer> indexOfEmails = new ArrayList<>();
-		for (int i = 0; i < emails.size(); i++) {
-			if (emails.get(i).contains(keyword)) {
-				indexOfEmails.add(i);
+	private void searchEmailsByKeyWord(String keyword) {
+		List<String> newList = new ArrayList<>();
+		for (String email : emails) {
+			if (email.contains(keyword)) {
+				newList.add(email);
 			}
 		}
-		return indexOfEmails;
+		System.out.println(newList);
 	}
 
 }
