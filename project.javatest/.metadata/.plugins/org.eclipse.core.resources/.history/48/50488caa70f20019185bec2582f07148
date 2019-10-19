@@ -14,13 +14,11 @@
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<script type="text/javascript" defer>
 			function deleteRow(id){
+				console.log(id);
 				let rowId = "row" + id;
 				let row = document.getElementById(rowId);
 				let tableBody = document.getElementById("tbody");
 				tableBody.removeChild(row);
-				fetch("/userlist?type=delete&id=" + id,{
-				    method: "POST"
-				})
 			}
 		</script>	
 	</head>

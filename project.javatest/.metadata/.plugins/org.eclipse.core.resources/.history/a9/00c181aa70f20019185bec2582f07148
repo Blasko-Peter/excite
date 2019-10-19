@@ -64,15 +64,8 @@ public class UserList extends IWebAction {
 
 				String newPage = "<a href='/userlist'><h1>Success Update</h1></a>";
 				result.addData("content", newPage);
-			} else if (parameterMap.get("type").equals("delete")) {
+			} else if (parameterMap.get("type").equals("delete")){
 				System.out.println(parameterMap.get("id"));
-
-				Object[] fields = new Object[2];
-				fields[0] = "deleted";
-				fields[1] = Boolean.parseBoolean("true");
-
-				DataBase.update(databaseName, Integer.parseInt(parameterMap.get("id")), fields);
-
 			} else {
 				String newEditForm = getEditForm(Integer.parseInt(parameterMap.get("type")));
 				result.addData("content", newEditForm);
