@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = false;
+	private static boolean isTest = true;
 
 	public static void main(String[] args) {
 		stat1();
@@ -35,6 +35,7 @@ public class UserStat {
 			String subDate = "";
 			for (i = 1; i < subscriptionData.length; i++) {
 				temp = subscriptionData[i].split(",");
+				System.out.println(temp);
 				if (userId == Integer.parseInt(temp[0])) {
 					subbed = Boolean.parseBoolean(temp[1]);
 					listId = Integer.parseInt(temp[2]);

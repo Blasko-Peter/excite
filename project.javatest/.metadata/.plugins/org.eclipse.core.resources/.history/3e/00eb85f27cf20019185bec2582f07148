@@ -49,14 +49,8 @@ public class UserStat {
 				count = 0;
 			}
 			baseStat.put(key, count + 1);
-			if (isTest) {
-				if (i >= 10) {
-					break;
-				}
-			} else {
-				if (i >= 20) {
-					break;
-				}
+			if (isTest && i >= 10) {
+				break;
 			}
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {

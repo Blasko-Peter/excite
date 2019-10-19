@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = false;
+	private static boolean isTest = true;
 
 	public static void main(String[] args) {
 		stat1();

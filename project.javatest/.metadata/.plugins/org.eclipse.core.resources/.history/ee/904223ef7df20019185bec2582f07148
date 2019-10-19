@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = false;
+	private static boolean isTest = true;
 
 	public static void main(String[] args) {
 		stat1();
@@ -50,13 +50,7 @@ public class UserStat {
 			}
 			baseStat.put(key, count + 1);
 			if (isTest) {
-				if (i >= 10) {
-					break;
-				}
-			} else {
-				if (i >= 20) {
-					break;
-				}
+				break;
 			}
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
