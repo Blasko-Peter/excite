@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -68,7 +70,7 @@ public class UserStat {
 	private static void stat2() {
 		Map<String, Integer> baseStat = new HashMap<String, Integer>();
 		String[] userData = getFile("WebContent/data/users.txt").split("\n");
-		for (int i = 1; i < userData.length; i++) {
+		for (int i = 1; i < 10; i++) {
 			String[] temp = userData[i].split(",");
 			String key = (temp[4].substring(0, 7));
 			Integer count = baseStat.get(key);

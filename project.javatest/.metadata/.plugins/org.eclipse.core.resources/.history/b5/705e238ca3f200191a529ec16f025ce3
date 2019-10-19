@@ -64,22 +64,10 @@ public class UserStat {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());
 		}
 	}
-
-	private static void stat2() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
+	
+	private static void stat2(){
 		String[] userData = getFile("WebContent/data/users.txt").split("\n");
-		for (int i = 1; i < userData.length; i++) {
-			String[] temp = userData[i].split(",");
-			String key = (temp[4].substring(0, 7));
-			Integer count = baseStat.get(key);
-			if (count == null) {
-				count = 0;
-			}
-			baseStat.put(key, count + 1);
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
+		System.out.println(userData);
 	}
 
 	private static String getFile(String path) {

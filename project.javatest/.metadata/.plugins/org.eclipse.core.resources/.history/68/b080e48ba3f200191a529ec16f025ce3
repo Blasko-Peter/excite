@@ -10,11 +10,10 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = true;
+	private static boolean isTest = false;
 
 	public static void main(String[] args) {
-		// stat1();
-		stat2();
+		stat1();
 	}
 
 	private static void stat1() {
@@ -59,23 +58,6 @@ public class UserStat {
 					break;
 				}
 			}
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
-	}
-
-	private static void stat2() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		String[] userData = getFile("WebContent/data/users.txt").split("\n");
-		for (int i = 1; i < userData.length; i++) {
-			String[] temp = userData[i].split(",");
-			String key = (temp[4].substring(0, 7));
-			Integer count = baseStat.get(key);
-			if (count == null) {
-				count = 0;
-			}
-			baseStat.put(key, count + 1);
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());
