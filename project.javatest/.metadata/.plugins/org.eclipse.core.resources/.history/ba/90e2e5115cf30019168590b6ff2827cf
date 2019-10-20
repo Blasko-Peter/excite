@@ -10,15 +10,15 @@ import java.util.Set;
 import org.json.JSONObject;
 
 public class UserStatJson {
-
+	
 	private static List<User> users;
-
+	
 	public static void main(String[] args) {
 		loadUsersJson();
 		seeUser(18995);
 		seeUser(22895);
 	}
-
+	
 	private static void loadUsersJson() {
 		users = new ArrayList<>();
 		String jsonText;
@@ -58,8 +58,8 @@ public class UserStatJson {
 			e.printStackTrace();
 		}
 	}
-
-	private static void seeUser(int index) {
+	
+	private static void seeUser(int index){
 		User user = users.get(index);
 		System.out.println(user.getId());
 		System.out.println(user.getFirst_name());
