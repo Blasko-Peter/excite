@@ -78,7 +78,7 @@ public class UserStatJson {
 				Integer id = 0;
 				Boolean subscribed = false;
 				Integer listid = 0;
-				String createdate = "0000-00-00 00:00:00";
+				String createDate = "0000-00-00 00:00:00";
 				for (String key : keys) {
 					if (key.equals("id")) {
 						id = (Integer) jsonFile.get("id");
@@ -86,11 +86,11 @@ public class UserStatJson {
 						subscribed = (Boolean) jsonFile.get("subscribed");
 					} else if (key.equals("listid")) {
 						listid = (Integer) jsonFile.get("listid");
-					} else if (key.equals("createdate")) {
-						createdate = (String) jsonFile.get("createdate");
+					} else if (key.equals("createDate")) {
+						createDate = (String) jsonFile.get("createDate");
 					}
 				}
-				Newslettersub newNewslettersub = new Newslettersub(id, subscribed, listid, createdate);
+				Newslettersub newNewslettersub = new Newslettersub(id, subscribed, listid, createDate);
 				newslettersubs.add(newNewslettersub);
 			}
 		} catch (IOException e) {

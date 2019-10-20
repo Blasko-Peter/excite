@@ -1,19 +1,19 @@
 package com.xcite.javatest.action.standalone;
 
 public class Newslettersub {
-
+	
 	private int id;
 	private boolean subscribed;
 	private int listid;
-	private String createdate;
-
-	public Newslettersub(int id, boolean subscribed, int listid, String createdate) {
+	private String createDate;
+	
+	public Newslettersub(int id, boolean subscribed, int listid, String createDate){
 		this.id = id;
 		this.subscribed = subscribed;
 		this.listid = listid;
-		this.createdate = createdate;
+		this.createDate = createDate;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -29,7 +29,7 @@ public class Newslettersub {
 	public void setSubscribed(Boolean subscribed) {
 		this.subscribed = subscribed;
 	}
-
+	
 	public int getListid() {
 		return listid;
 	}
@@ -39,11 +39,11 @@ public class Newslettersub {
 	}
 
 	public String getCreatedate() {
-		return createdate;
+		return createDate;
 	}
 
-	public void setCreatedate(String createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(String createdate) {
+		this.createDate = createdate;
 	}
 
 }

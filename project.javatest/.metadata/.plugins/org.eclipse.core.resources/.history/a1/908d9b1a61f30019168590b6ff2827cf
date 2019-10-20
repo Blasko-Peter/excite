@@ -87,10 +87,10 @@ public class UserStatJson {
 					} else if (key.equals("listid")) {
 						listid = (Integer) jsonFile.get("listid");
 					} else if (key.equals("createdate")) {
-						createdate = (String) jsonFile.get("createdate");
+						createDate = (String) jsonFile.get("createdate");
 					}
 				}
-				Newslettersub newNewslettersub = new Newslettersub(id, subscribed, listid, createdate);
+				Newslettersub newNewslettersub = new Newslettersub(id, subscribed, listid, createDate);
 				newslettersubs.add(newNewslettersub);
 			}
 		} catch (IOException e) {
