@@ -18,8 +18,8 @@ public class UserStat {
 
 	public static void main(String[] args) {
 		//stat1();
-		//stat2();
-		stat3();
+		stat2();
+		//stat3();
 		//stat4();
 	}
 
@@ -93,14 +93,12 @@ public class UserStat {
 		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
 		for (int i = 1; i < subscriptionData.length; i++) {
 			String[] temp = subscriptionData[i].split(",");
-			if (temp[1].equals("true")) {
-				String key = temp[2] + " " + temp[3].substring(0, 7);
-				Integer count = baseStat.get(key);
-				if (count == null) {
-					count = 0;
-				}
-				baseStat.put(key, count + 1);
+			String key = temp[2] + " " + temp[3].substring(0, 7);
+			Integer count = baseStat.get(key);
+			if (count == null) {
+				count = 0;
 			}
+			baseStat.put(key, count + 1);
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());

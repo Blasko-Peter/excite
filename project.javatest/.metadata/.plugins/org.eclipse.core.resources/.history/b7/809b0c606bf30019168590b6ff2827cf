@@ -22,8 +22,7 @@ public class UserStatJson {
 		loadUsersJson();
 		loadNewslettersubJson();
 		//stat1J();
-		//stat2J();
-		stat3J();
+		stat2J();
 	}
 
 	private static void stat1J() {
@@ -68,23 +67,6 @@ public class UserStatJson {
 				count = 0;
 			}
 			baseStat.put(key, count + 1);
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
-	}
-
-	private static void stat3J() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		for (Newslettersub newslettersub : newslettersubs) {
-			if (newslettersub.getSubscribed().equals(true)) {
-				String key = newslettersub.getListid() + " " + newslettersub.getCreatedate().substring(0, 7);
-				Integer count = baseStat.get(key);
-				if (count == null) {
-					count = 0;
-				}
-				baseStat.put(key, count + 1);
-			}
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());

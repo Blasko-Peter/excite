@@ -93,7 +93,7 @@ public class UserStat {
 		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
 		for (int i = 1; i < subscriptionData.length; i++) {
 			String[] temp = subscriptionData[i].split(",");
-			if (temp[1].equals("true")) {
+			if(temp[1].equals("true")){
 				String key = temp[2] + " " + temp[3].substring(0, 7);
 				Integer count = baseStat.get(key);
 				if (count == null) {
