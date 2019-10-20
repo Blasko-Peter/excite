@@ -17,9 +17,9 @@ public class UserStat {
 	private static int filterYear = 2015;
 
 	public static void main(String[] args) {
-		stat1();
-		stat2();
-		stat3();
+		//stat1();
+		//stat2();
+		//stat3();
 		stat4();
 	}
 
@@ -111,18 +111,20 @@ public class UserStat {
 		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
 		List<Integer> filteredUserData = new ArrayList<>();
 		List<String[]> filteredSubscriptionData = new ArrayList<>();
-		for (int i = 1; i < userData.length; i++) {
+		for (int i = 1; i < 100; i++) {
 			String[] temp = userData[i].split(",");
 			if (Integer.parseInt(temp[4].substring(0, 4)) > filterYear) {
 				filteredUserData.add(Integer.parseInt(temp[0]));
 			}
 		}
-		for (int j = 1; j < subscriptionData.length; j++) {
+		for (int j = 1; j < 100; j++) {
 			String[] temp = subscriptionData[j].split(",");
 			if (temp[1].equals("true")) {
 				filteredSubscriptionData.add(temp);
 			}
 		}
+		System.out.println(filteredUserData.size());
+		System.out.println(filteredSubscriptionData.size());
 		for (int userId : filteredUserData) {
 			for (int k = 0; k < filteredSubscriptionData.size(); k++) {
 				if (userId == Integer.parseInt(filteredSubscriptionData.get(k)[0])) {
