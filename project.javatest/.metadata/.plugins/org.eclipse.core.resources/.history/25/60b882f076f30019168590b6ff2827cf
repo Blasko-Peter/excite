@@ -7,10 +7,8 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import com.xcite.core.interfaces.IWebAction;
 import com.xcite.core.servlet.ParameterMap;
@@ -157,17 +155,10 @@ public class UserList extends IWebAction {
 
 	private List<Integer> searchEmailsByKeyWord(String keyword) {
 		List<Integer> indexOfEmails = new ArrayList<>();
-		Set<Integer> indexs = new HashSet<>();
-		String[] keywords = keyword.split(" ");
-		for (int j = 0; j < keywords.length; j++) {
-			for (int i = 0; i < emails.size(); i++) {
-				if (emails.get(i).contains(keywords[j])) {
-					indexs.add(i);
-				}
+		for (int i = 0; i < emails.size(); i++) {
+			if (emails.get(i).contains(keyword)) {
+				indexOfEmails.add(i);
 			}
-		}
-		for (Integer index : indexs) {
-			indexOfEmails.add(index);
 		}
 		return indexOfEmails;
 	}
