@@ -21,8 +21,7 @@ public class UserStatJson {
 	public static void main(String[] args) {
 		loadUsersJson();
 		loadNewslettersubJson();
-		//stat1J();
-		stat2J();
+		stat1J();
 	}
 
 	private static void stat1J() {
@@ -52,21 +51,6 @@ public class UserStatJson {
 					break;
 				}
 			}
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
-	}
-
-	private static void stat2J() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		for (User user : users) {
-			String key = user.getReg_date().substring(0, 7);
-			Integer count = baseStat.get(key);
-			if (count == null) {
-				count = 0;
-			}
-			baseStat.put(key, count + 1);
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
 			System.out.println(entry.getKey() + "\t" + entry.getValue());
