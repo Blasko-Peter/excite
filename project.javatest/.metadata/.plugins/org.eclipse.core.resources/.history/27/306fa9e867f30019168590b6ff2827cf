@@ -47,7 +47,7 @@ public class UserStatJson {
 					break;
 				}
 			} else {
-				if (i >= 19) {
+				if (i >= 1000) {
 					break;
 				}
 			}

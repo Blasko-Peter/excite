@@ -16,7 +16,7 @@ public class UserStatJson {
 
 	private static List<User> users;
 	private static List<Newslettersub> newslettersubs;
-	private static boolean isTest = false;
+	private static boolean isTest = true;
 
 	public static void main(String[] args) {
 		loadUsersJson();
@@ -30,7 +30,7 @@ public class UserStatJson {
 		for (i = 0; i < users.size(); i++) {
 			User newUser = users.get(i);
 			int userId = newUser.getId();
-			for (i = 0; i < newslettersubs.size(); i++) {
+			for(i = 0; i < newslettersubs.size(); i++){
 				Newslettersub newNewslettersub = newslettersubs.get(i);
 				if (userId == newNewslettersub.getId()) {
 					break;

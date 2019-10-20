@@ -12,15 +12,15 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = true;
+	private static boolean isTest = false;
 
 	private static int filterYear = 2015;
 
 	public static void main(String[] args) {
 		stat1();
-		stat2();
-		stat3();
-		stat4();
+		//stat2();
+		//stat3();
+		//stat4();
 	}
 
 	private static void stat1() {
