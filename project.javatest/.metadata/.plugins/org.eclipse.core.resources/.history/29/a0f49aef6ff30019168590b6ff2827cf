@@ -16,16 +16,14 @@ public class UserStatJson {
 
 	private static List<User> users;
 	private static List<Newslettersub> newslettersubs;
-	private static boolean isTest = true;
-	private static int filterYear = 2015;
+	private static boolean isTest = false;
 
 	public static void main(String[] args) {
 		loadUsersJson();
 		loadNewslettersubJson();
-		stat1J();
-		stat2J();
+		//stat1J();
+		//stat2J();
 		stat3J();
-		stat4J();
 	}
 
 	private static void stat1J() {
@@ -86,27 +84,6 @@ public class UserStatJson {
 					count = 0;
 				}
 				baseStat.put(key, count + 1);
-			}
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
-	}
-
-	private static void stat4J() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		for (User user : users) {
-			if (Integer.parseInt(user.getReg_date().substring(0, 4)) > filterYear) {
-				for (Newslettersub newslettersub : newslettersubs) {
-					if (user.getId() == newslettersub.getId() && newslettersub.getSubscribed().equals(true)) {
-						String key = String.valueOf(newslettersub.getListid());
-						Integer count = baseStat.get(key);
-						if (count == null) {
-							count = 0;
-						}
-						baseStat.put(key, count + 1);
-					}
-				}
 			}
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {

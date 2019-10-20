@@ -16,15 +16,15 @@ public class UserStatJson {
 
 	private static List<User> users;
 	private static List<Newslettersub> newslettersubs;
-	private static boolean isTest = true;
+	private static boolean isTest = false;
 	private static int filterYear = 2015;
 
 	public static void main(String[] args) {
 		loadUsersJson();
 		loadNewslettersubJson();
-		stat1J();
-		stat2J();
-		stat3J();
+		//stat1J();
+		//stat2J();
+		//stat3J();
 		stat4J();
 	}
 
@@ -93,12 +93,45 @@ public class UserStatJson {
 		}
 	}
 
+	private static void stat4Js() {
+		Map<String, Integer> baseStat = new HashMap<String, Integer>();
+		List<Integer> filteredUserData = new ArrayList<>();
+		List<Newslettersub> filteredSubscriptionData = new ArrayList<>();
+		for (User user : users) {
+			if (Integer.parseInt(user.getReg_date().substring(0, 4)) > filterYear) {
+				filteredUserData.add(user.getId());
+			}
+		}
+		System.out.println(filteredUserData.size());
+		for (Newslettersub newslettersub : newslettersubs) {
+			if (newslettersub.getSubscribed().equals(true)) {
+				filteredSubscriptionData.add(newslettersub);
+			}
+		}
+		System.out.println(filteredSubscriptionData.size());
+		for (int userId : filteredUserData) {
+			for (int k = 0; k < filteredSubscriptionData.size(); k++) {
+				if (userId == filteredSubscriptionData.get(k).getId()) {
+					String key = String.valueOf(filteredSubscriptionData.get(k).getListid());
+					Integer count = baseStat.get(key);
+					if (count == null) {
+						count = 0;
+					}
+					baseStat.put(key, count + 1);
+				}
+			}
+		}
+		for (Entry<String, Integer> entry : baseStat.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
+	}
+	
 	private static void stat4J() {
 		Map<String, Integer> baseStat = new HashMap<String, Integer>();
 		for (User user : users) {
-			if (Integer.parseInt(user.getReg_date().substring(0, 4)) > filterYear) {
+			if(Integer.parseInt(user.getReg_date().substring(0, 4)) > filterYear){
 				for (Newslettersub newslettersub : newslettersubs) {
-					if (user.getId() == newslettersub.getId() && newslettersub.getSubscribed().equals(true)) {
+					if (user.getId() == newslettersub.getId()) {
 						String key = String.valueOf(newslettersub.getListid());
 						Integer count = baseStat.get(key);
 						if (count == null) {
