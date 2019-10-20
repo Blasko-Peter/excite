@@ -1,0 +1,49 @@
+package com.xcite.javatest.action.standalone;
+
+public class Newslettersub {
+
+	private int id;
+	private boolean subscribed;
+	private int listid;
+	private String createDate;
+
+	public Newslettersub(int id, boolean subscribed, int listid, String createDate) {
+		this.id = id;
+		this.subscribed = subscribed;
+		this.listid = listid;
+		this.createDate = createDate;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Boolean getSubscribed() {
+		return subscribed;
+	}
+
+	public void setSubscribed(Boolean subscribed) {
+		this.subscribed = subscribed;
+	}
+
+	public int getListid() {
+		return listid;
+	}
+
+	public void setListid(int listid) {
+		this.listid = listid;
+	}
+
+	public String getCreatedate() {
+		return createDate;
+	}
+
+	public void setCreateDate(String createdate) {
+		this.createDate = createdate;
+	}
+
+}

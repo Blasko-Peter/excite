@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <servers>
-  <server hostname="localhost" id="Jetty" id-set="true" name="Jetty 9 at localhost" runtime-id="Jetty" server-type="com.xcite.jettyconnector.server" server-type-id="com.xcite.jettyconnector.server" start-timeout="120" stop-timeout="15" timestamp="5">
+  <server hostname="localhost" id="Jetty" id-set="true" name="Jetty 9 at localhost" runtime-id="Jetty" server-type="com.xcite.jettyconnector.server" server-type-id="com.xcite.jettyconnector.server" start-timeout="120" stop-timeout="15" timestamp="14">
     <list key="modules" value0="JavaTest::org.eclipse.jst.jee.server:JavaTest::jst.web::2.5"/>
     <list key="com.xcite.jetty.attributes.modules" value0="JavaTest"/>
   </server>

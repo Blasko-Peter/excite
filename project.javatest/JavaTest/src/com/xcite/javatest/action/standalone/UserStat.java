@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -12,8 +14,13 @@ public class UserStat {
 
 	private static boolean isTest = true;
 
+	private static int filterYear = 2015;
+
 	public static void main(String[] args) {
 		stat1();
+		stat2();
+		stat3();
+		stat4();
 	}
 
 	private static void stat1() {
@@ -49,8 +56,85 @@ public class UserStat {
 				count = 0;
 			}
 			baseStat.put(key, count + 1);
-			if (isTest && i >= 10) {
-				break;
+			if (isTest) {
+				if (i >= 10) {
+					break;
+				}
+			} else {
+				if (i >= 20) {
+					break;
+				}
+			}
+		}
+		for (Entry<String, Integer> entry : baseStat.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
+	}
+
+	private static void stat2() {
+		Map<String, Integer> baseStat = new HashMap<String, Integer>();
+		String[] userData = getFile("WebContent/data/users.txt").split("\n");
+		for (int i = 1; i < userData.length; i++) {
+			String[] temp = userData[i].split(",");
+			String key = temp[4].substring(0, 7);
+			Integer count = baseStat.get(key);
+			if (count == null) {
+				count = 0;
+			}
+			baseStat.put(key, count + 1);
+		}
+		for (Entry<String, Integer> entry : baseStat.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
+	}
+
+	private static void stat3() {
+		Map<String, Integer> baseStat = new HashMap<String, Integer>();
+		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
+		for (int i = 1; i < subscriptionData.length; i++) {
+			String[] temp = subscriptionData[i].split(",");
+			if (temp[1].equals("true")) {
+				String key = temp[2] + " " + temp[3].substring(0, 7);
+				Integer count = baseStat.get(key);
+				if (count == null) {
+					count = 0;
+				}
+				baseStat.put(key, count + 1);
+			}
+		}
+		for (Entry<String, Integer> entry : baseStat.entrySet()) {
+			System.out.println(entry.getKey() + "\t" + entry.getValue());
+		}
+	}
+
+	private static void stat4() {
+		Map<String, Integer> baseStat = new HashMap<String, Integer>();
+		String[] userData = getFile("WebContent/data/users.txt").split("\n");
+		String[] subscriptionData = getFile("WebContent/data/newslettersubs.txt").split("\n");
+		List<Integer> filteredUserData = new ArrayList<>();
+		List<String[]> filteredSubscriptionData = new ArrayList<>();
+		for (int i = 1; i < userData.length; i++) {
+			String[] temp = userData[i].split(",");
+			if (Integer.parseInt(temp[4].substring(0, 4)) > filterYear) {
+				filteredUserData.add(Integer.parseInt(temp[0]));
+			}
+		}
+		for (int j = 1; j < subscriptionData.length; j++) {
+			String[] temp = subscriptionData[j].split(",");
+			if (temp[1].equals("true")) {
+				filteredSubscriptionData.add(temp);
+			}
+		}
+		for (int userId : filteredUserData) {
+			for (int k = 0; k < filteredSubscriptionData.size(); k++) {
+				if (userId == Integer.parseInt(filteredSubscriptionData.get(k)[0])) {
+					String key = filteredSubscriptionData.get(k)[2];
+					Integer count = baseStat.get(key);
+					if (count == null) {
+						count = 0;
+					}
+					baseStat.put(key, count + 1);
+				}
 			}
 		}
 		for (Entry<String, Integer> entry : baseStat.entrySet()) {
