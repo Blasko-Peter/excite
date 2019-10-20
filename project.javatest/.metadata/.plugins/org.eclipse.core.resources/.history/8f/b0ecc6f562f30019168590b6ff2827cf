@@ -12,7 +12,7 @@ import java.util.Map.Entry;
 
 public class UserStat {
 
-	private static boolean isTest = false;
+	private static boolean isTest = true;
 
 	private static int filterYear = 2015;
 

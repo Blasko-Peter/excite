@@ -37,11 +37,11 @@ public class UserStatJson {
 				}
 				baseStat.put(key, count + 1);
 				if (isTest) {
-					if (i >= 9) {
+					if (i >= 10) {
 						break;
 					}
 				} else {
-					if (i >= 19) {
+					if (i >= 20) {
 						break;
 					}
 				}

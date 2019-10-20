@@ -4,10 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 
 import org.json.JSONObject;
@@ -16,40 +13,12 @@ public class UserStatJson {
 
 	private static List<User> users;
 	private static List<Newslettersub> newslettersubs;
-	private static boolean isTest = true;
 
 	public static void main(String[] args) {
 		loadUsersJson();
 		loadNewslettersubJson();
-		stat1J();
-	}
-
-	private static void stat1J() {
-		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		for (int i = 0; i < users.size(); i++) {
-			User newUser = users.get(i);
-			Newslettersub newNewslettersub = newslettersubs.get(i);
-			if (newUser.getId() == newNewslettersub.getId()) {
-				String key = newUser.getEmail().split("@")[1];
-				Integer count = baseStat.get(key);
-				if (count == null) {
-					count = 0;
-				}
-				baseStat.put(key, count + 1);
-				if (isTest) {
-					if (i >= 9) {
-						break;
-					}
-				} else {
-					if (i >= 19) {
-						break;
-					}
-				}
-			}
-		}
-		for (Entry<String, Integer> entry : baseStat.entrySet()) {
-			System.out.println(entry.getKey() + "\t" + entry.getValue());
-		}
+		seeNews(1);
+		seeNews(29993);
 	}
 
 	private static void loadUsersJson() {
@@ -129,4 +98,12 @@ public class UserStatJson {
 		}
 	}
 
+	private static void seeNews(int index) {
+		System.out.println(newslettersubs.size());
+		Newslettersub newNls = newslettersubs.get(index);
+		System.out.println(newNls.getId());
+		System.out.println(newNls.getSubscribed());
+		System.out.println(newNls.getListid());
+		System.out.println(newNls.getCreatedate());
+	}
 }

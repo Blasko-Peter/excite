@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.json.JSONObject;
 
@@ -23,13 +23,13 @@ public class UserStatJson {
 		loadNewslettersubJson();
 		stat1J();
 	}
-
-	private static void stat1J() {
+	
+	private static void stat1J(){
 		Map<String, Integer> baseStat = new HashMap<String, Integer>();
-		for (int i = 0; i < users.size(); i++) {
+		for(int i = 0; i < users.size(); i++){
 			User newUser = users.get(i);
 			Newslettersub newNewslettersub = newslettersubs.get(i);
-			if (newUser.getId() == newNewslettersub.getId()) {
+			if(newUser.getId() == newNewslettersub.getId()){
 				String key = newUser.getEmail().split("@")[1];
 				Integer count = baseStat.get(key);
 				if (count == null) {
@@ -37,11 +37,11 @@ public class UserStatJson {
 				}
 				baseStat.put(key, count + 1);
 				if (isTest) {
-					if (i >= 9) {
+					if (i >= 10) {
 						break;
 					}
 				} else {
-					if (i >= 19) {
+					if (i >= 20) {
 						break;
 					}
 				}
